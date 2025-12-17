@@ -1,0 +1,565 @@
+:root {
+    --inspect-bg-base: #111;
+    --inspect-bg-content: rgba(21, 101, 192, 0.15);
+    --inspect-bg-div: rgba(0, 150, 136, 0.15);
+    --inspect-bg-card: rgba(255, 255, 255, 0.05);
+    --inspect-out-section: #ff7043;
+    --inspect-out-container: #4db6ac;
+    --inspect-out-element: #90caf9;
+    --inspect-out-accent: #ffd54f;
+    --inspect-out-timeline: #ce93d8;
+    --inspect-hover-padding: rgba(76, 175, 80, 0.3);
+    --inspect-hover-margin: rgba(255, 152, 0, 0.3);
+    --text-color: #e0e0e0;
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 1px dashed rgba(255, 255, 255, 0.1);
+    outline-offset: 0;
+    background-image: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: var(--inspect-bg-base);
+    color: var(--text-color);
+    min-height: 250vh;
+}
+
+a {
+    color: var(--inspect-out-element);
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    background: var(--inspect-bg-content);
+    outline: 2px dashed var(--inspect-out-container);
+    position: relative;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+
+    background: #000;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--inspect-out-accent);
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px dotted var(--text-color);
+}
+
+.site-logo a {
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+/* Mobile Menu Icon (Visível no wireframe) */
+.mobile-menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    border: 1px solid var(--text-color);
+}
+
+.mobile-menu-icon span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 2px;
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    outline: 2px solid var(--inspect-out-section);
+}
+
+.hero-heading {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 700;
+
+    outline: 1px dashed var(--inspect-out-element);
+}
+
+.hero-heading h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-heading>div {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.hero-heading>div>p {
+    margin: 0;
+    line-height: 1.1em;
+    font-weight: 300;
+}
+
+.words p {
+    line-height: 1.1em;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.container-words {
+    height: 1.1em;
+    width: 100%;
+    position: relative;
+
+    border: 1px dotted var(--inspect-out-accent);
+}
+
+.words {
+    animation: rotateTextUser 12.5s infinite;
+}
+
+@keyframes rotateTextUser {
+
+    0%,
+    16% {
+        transform: translateY(0);
+    }
+
+    20%,
+    36% {
+        transform: translateY(-1.1em);
+    }
+
+    40%,
+    56% {
+        transform: translateY(-2.2em);
+    }
+
+    60%,
+    76% {
+        transform: translateY(-3.3em);
+    }
+
+}
+
+/* Sections General */
+.about,
+.projects,
+.science {
+    padding: 100px 0;
+    position: relative;
+
+    background: var(--inspect-bg-base);
+    outline: 1px solid var(--inspect-out-section);
+    margin: 20px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+
+    border-left: 4px solid var(--inspect-out-section);
+    color: var(--text-color);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-img {
+    position: relative;
+    height: 300px;
+
+    background: repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.05) 10px,
+            rgba(255, 255, 255, 0.1) 10px,
+            rgba(255, 255, 255, 0.1) 20px);
+    outline: 2px dashed var(--text-color);
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    padding: 2rem;
+    border-radius: 12px;
+
+    background: var(--inspect-bg-div);
+    border: 1px solid var(--inspect-out-element);
+    outline: 2px dashed var(--inspect-out-element);
+}
+
+.card-image {
+    height: 200px;
+    width: 100%;
+    margin-bottom: 1rem;
+    /* Visual Wireframe */
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px dotted #fff;
+}
+
+.card-image img {
+    opacity: 0;
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.project-card h3 {
+    margin-bottom: 1rem;
+}
+
+.tags {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tags span {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    margin-right: 5px;
+    border: 1px solid var(--inspect-out-accent)t;
+    color: var(--inspect-out-accent);
+}
+
+.science-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.science-img {
+    border-radius: 20px;
+    min-height: 400px;
+    height: 100%;
+    background: repeating-linear-gradient(-45deg, #222, #222 10px, #333 10px, #333 20px);
+    outline: 2px dashed var(--text-color);
+}
+
+.science-img img {
+    opacity: 0;
+}
+
+.timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid var(--inspect-out-timeline);
+}
+
+.timeline-item {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.6rem;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
+
+
+    background: #000;
+    border: 2px solid var(--inspect-out-timeline);
+    border-radius: 50%;
+}
+
+.year {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--inspect-out-timeline);
+    text-decoration: underline;
+}
+
+
+#footer {
+    padding: 80px 0 40px;
+    text-align: center;
+
+
+    background: var(--inspect-bg-div);
+    border-top: 4px solid var(--inspect-out-section);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.timeline-content h3 {
+    margin-bottom: 0.5rem;
+}
+
+
+#footer {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.footer-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.footer-quote small {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+.social-links {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-links a {
+    border: 1px solid var(--text-color);
+    font-weight: 600;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .hero-heading h1 {
+        font-size: 3rem;
+    }
+
+    .hero-heading {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        background: #050A14;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .mobile-menu-icon {
+        display: flex;
+        z-index: 1001;
+        /* Above nav links */
+    }
+
+    .hero-heading h1 {
+        font-size: 2.5rem;
+        /* Resize new h1 class */
+    }
+
+    .hero-heading {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer Responsiveness */
+@media (max-width: 768px) {
+    #footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-quote {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+}
+
+/* Inspection Toggle Button */
+#toggle-inspection {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: var(--bg-space);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+}
+
+#toggle-inspection:hover {
+    background-color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* TODA A MAGIA */
+.inspect-active {
+    cursor: crosshair;
+
+    box-shadow:
+        0 0 0 5px var(--inspect-hover-padding) inset,
+        /* Interno = Padding */
+        0 0 0 10px var(--inspect-hover-margin);
+    /* Externo = Margin */
+
+    position: relative;
+    z-index: 9999;
+    outline: none;
+}
+
+/* Etiqueta Flutuante com Dados */
+.inspect-active::after {
+    content:
+        attr(data-class-name) " | "
+        attr(data-width) "x" attr(data-height)
+        " | P: " attr(data-padding)
+        " | M: " attr(data-margin)
+        " | B: " attr(data-border)
+        " | R: " attr(data-radius)
+        " | G: " attr(data-gap);
+
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+
+    background: #000;
+    color: #0f0;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 4px 8px;
+    border: 1px solid #0f0;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* CORREÇÃO DA CAIXA VAZIA: 
+   Se o elemento não tiver o atributo data-class-name preenchido pelo JS, 
+   não mostre a etiqueta. Isso remove o "| x | P: | M:" fantasma.
+*/
+.inspect-active:not([data-class-name])::after {
+    display: none;
+}
+
+/* Ajustes para a etiqueta não sair da tela na navbar */
+.navbar .inspect-active::after,
+.nav-links .inspect-active::after {
+    top: 100%;
+    bottom: auto;
+}
+
+/* Tratamento para links pequenos (apenas mostra o nome, sem box-model gigante) */
+.nav-links a.inspect-active,
+.social-links a.inspect-active {
+    box-shadow: none;
+    background: #fff;
+    /* Destaque leve apenas no texto */
+    color: #000;
+}
+
+.nav-links a.inspect-active::after,
+.social-links a.inspect-active::after {
+    content: attr(data-class-name);
+}

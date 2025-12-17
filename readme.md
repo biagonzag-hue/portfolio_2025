@@ -73,8 +73,8 @@ This project was created to:
 
 ## 📬 Contact
 
-- **LinkedIn:** [Bianca Gonzaga]([https://www.linkedin.com/](https://www.linkedin.com/in/bianca-gonzaga-de-ara%C3%BAjo-192109280/))
-- **GitHub:** [biagonzag-hue]([https://github.com/biagonzag-hue](https://github.com/biagonzag-hue))
+- **LinkedIn:** [Bianca Gonzaga](https://www.linkedin.com/in/bianca-gonzaga-de-ara%C3%BAjo-192109280/)
+- **GitHub:** [biagonzag-hue](https://github.com/biagonzag-hue)
 - **Email:** bia.gonzag@gmail.com
 
 ---

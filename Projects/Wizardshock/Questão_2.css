@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'ThaleahFat';
+    src: url('fonts/ThaleahFat.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: #1c050f;
+    font-family: 'ThaleahFat', helvetica, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: url('Images/header.png') no-repeat center/cover;
+    height: 80vh;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8vh;
+    padding: 10vh 2vw;
+}
+
+.logo {
+    margin-top: 5vh;
+    height: auto;
+    width: min(80vw, 600px);
+}
+
+.collection {
+    background: #F7D621;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'ThaleahFat';
+    font-size: clamp(18px, 4vw, 32px);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        4px 4px 0 #000,
+        4px 8px 0 #000,
+        0 4px 0 #000,
+        -4px 4px 0 #000;
+}
+
+.collection:hover {
+    background: white;
+}
+
+.intro {
+    max-width: 1000px;
+    margin: 40px auto;
+    font-size: clamp(20px, 3vw, 35px);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0 20px;
+}
+
+.cards-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+.card {
+    flex: 0 1 300px;
+    max-width: 350px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card h3 {
+    font-size: clamp(22px, 3vw, 35px);
+}
+
+.collect {
+    background: #F7D621;
+    padding: 8px 10px;
+    font-family: 'ThaleahFat';
+    text-align: left;
+    font-size: clamp(16px, 3vw, 28px);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: fit-content;
+    box-shadow:
+        4px 4px 0 #000,
+        4px 8px 0 #000,
+        0 4px 0 #000,
+        -4px 4px 0 #000;
+}
+
+.collect:hover {
+    background: white;
+}
+
+.card p {
+    font-size: clamp(16px, 2.5vw, 25px);
+    text-align: left;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    opacity: 0.7;
+}
+
+footer p {
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: left;
+    font-size: clamp(14px, 2vw, 20px);
+}
+
+@media (max-width: 800px) {
+    .header {
+        gap: 6vh;
+    }
+
+    .logo {
+        width: min(70vw, 400px);
+    }
+
+    .cta {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        height: 70vh;
+        padding: 4vh 4vw;
+    }
+
+    .logo {
+        width: 65vw;
+    }
+
+    .cards-container {
+        gap: 20px;
+    }
+
+    .card {
+        width: 90vw;
+    }
+}

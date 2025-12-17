@@ -1,0 +1,200 @@
+/*
+    DEFINIÇÃO DAS FONTES PERSONALIZADAS
+    (ASSUMINDO QUE OS ARQUIVOS ESTÃO NA PASTA 'fonts/')
+*/
+@font-face {
+  font-family: 'Harryo';
+  src: url('fonts/HARRYP__.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lumos';
+  src: url('fonts/LUMOS.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Lumos', Arial, sans-serif;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.background{
+  width: 90%;               
+  height: 800px;            
+  margin: 70px auto;        
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 5px dashed rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px #000;
+}
+
+.top-bar {
+  background-color: #0a1d30;
+  color: #fff;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  z-index: 10;
+  border-top: 5px solid #000000;
+}
+
+.top-bar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.top-bar li{
+  display: inline-block;
+  margin: 0;
+  border-left: 2px solid #1b3b5c;
+}
+.top-bar a{
+  display: block;
+  padding: 5px 6px;
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.side-menu {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  width: 200px;
+  color: #eeedd1;
+  z-index: 5;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  line-height: 2.5em;
+}
+
+.side-menu ul li {
+  padding-left: 15px;
+}
+
+.whats-new {
+  margin-top: 200px;
+  font-size: 0.8em;
+  color: #eeedd1;
+}
+
+.whats-new::before {
+  content: "WHAT'S NEW";
+  display: block;
+  color: #eeedd1;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.whats-new .thumb {
+  width: 150px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+}
+
+.main-image {
+  position: absolute;
+  top: 50px;
+  left: 250px;
+  z-index: 2;
+}
+
+.main-logo {
+  width: 300px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  z-index: 5;
+}
+
+.title {
+  font-family: 'Harryo', serif;
+  color: #eeedd1;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 150px;
+  left: 200px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #000;
+  color: #eeedd1;
+  font-size: 0.7em;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+footer p {
+  margin: 2px 0;
+  line-height: 1.2;
+}
+
+footer p:first-child {
+  float: left;
+  width: 30%;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+footer p:nth-child(2) {
+  float: left;
+  width: 50%;
+  text-align: center;
+  margin-top: 0;
+}
+
+footer p:last-child {
+  float: left;
+  width: 20%;
+  text-align: right;
+  margin-top: 0;
+}
+
+footer::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer a,
+footer p:last-child {
+  color: #eeedd1;
+  text-decoration: none;
+  font-weight: bold;
+}

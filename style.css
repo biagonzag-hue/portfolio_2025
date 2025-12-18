@@ -254,13 +254,13 @@ body {
     );
 
     outline: 2px dashed var(--text-color);
-    overflow: hidden; /* 🔑 essencial */
+    overflow: hidden;
 }
 
 .about-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* corta mantendo proporção */
+    object-fit: cover; 
     object-position: center;
 }
 
@@ -291,7 +291,6 @@ body {
     width: 100%;
     overflow: hidden;
     background-color: var(--card-bg);
-    /* Fallback */
 }
 
 .card-image img {
@@ -342,7 +341,6 @@ body {
     border-bottom: 2px solid var(--accent);
 }
 
-/* Skills Section */
 .skills {
     padding: 100px 0;
 }
@@ -402,12 +400,12 @@ body {
 
 .skill-card:hover .skill-description {
     max-height: 200px;
-    /* Adjust based on content */
+
     opacity: 1;
     margin-top: 1rem;
 }
 
-/* Ensure visibility during reveal animation if needed */
+
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -441,7 +439,6 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     height: 100%;
     min-height: 300px;
-    /* Ensure logical height */
 }
 
 .science-img img {
@@ -485,13 +482,12 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Footer */
 #footer {
     padding: 80px 0 40px;
     text-align: center;
     color: var(--text-light);
     background: var(--bg-earth);
-    /* Solid earth color */
+
 }
 
 .footer-quote {
@@ -588,12 +584,12 @@ body {
     .mobile-menu-icon {
         display: flex;
         z-index: 1001;
-        /* Above nav links */
+
     }
 
     .hero-heading h1 {
         font-size: 2.5rem;
-        /* Resize new h1 class */
+
     }
 
     .hero-heading {
@@ -605,10 +601,10 @@ body {
     .hero-heading>div {
         flex-direction: row;
         align-items: center;
-        /* Better than baseline for mixed font sizes */
+
         gap: 0.3rem;
         height: 30px;
-        /* Fixed height for the line */
+
     }
 
     .hero-heading>div>p {
@@ -619,7 +615,7 @@ body {
     .container-words {
         width: auto;
         height: 30px;
-        /* Exact line height */
+
         overflow: hidden;
         flex: 1;
     }
@@ -627,7 +623,7 @@ body {
     .words p {
         font-size: 0.85rem;
         line-height: 30px;
-        /* Matches container */
+
         height: 30px;
         margin: 0;
         white-space: nowrap;
@@ -657,7 +653,6 @@ body {
     }
 }
 
-/* Footer Responsiveness */
 @media (max-width: 768px) {
     #footer {
         padding: 40px 0 20px;
@@ -676,7 +671,6 @@ body {
     }
 }
 
-/* Inspection Toggle Button */
 #toggle-inspection {
     position: fixed;
     bottom: 20px;

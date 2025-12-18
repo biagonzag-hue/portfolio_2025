@@ -1,4 +1,4 @@
-// Mobile Menu Toggle
+// Mobile Menu
 const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
 const navLinks = document.querySelector('.nav-links');
 
@@ -22,34 +22,20 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// Inspection Toggle Logic - Multi-page Navigation
+// Inspection 
 document.addEventListener('DOMContentLoaded', () => {
     const inspectionBtn = document.getElementById('toggle-inspection');
 
     if (inspectionBtn) {
-        // Check which page we are on
+
         const isInspectedPage = window.location.pathname.includes('index-inspecionado.html');
 
-        // Set initial text
         inspectionBtn.textContent = isInspectedPage ? 'Disable Inspection' : 'Enable Inspection';
 
         inspectionBtn.addEventListener('click', () => {
             if (isInspectedPage) {
-                // Go back to normal
                 window.location.href = 'index.html';
             } else {
-                // Go to inspection mode
                 window.location.href = 'index-inspecionado.html';
             }
         });
@@ -75,10 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ===============================
-       MONTA O NOME DO ELEMENTO
-       tag#id.class1.class2
-    =============================== */
     function getElementName(el) {
         let name = el.tagName.toLowerCase();
 
@@ -91,41 +73,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return name;
     }
 
-    /* ===============================
-       INSPEÇÃO DO ELEMENTO
-    =============================== */
     function inspectElement(el) {
 
-        // Ignora lixo estrutural
         if (['SCRIPT', 'STYLE', 'META', 'HEAD', 'HTML', 'LINK'].includes(el.tagName)) return;
 
         const style = getComputedStyle(el);
         const rect = el.getBoundingClientRect();
 
-        // Dimensões
         const width = Math.round(rect.width);
         const height = Math.round(rect.height);
 
-        // Padding & Margin
         const padding = `${style.paddingTop} ${style.paddingRight} ${style.paddingBottom} ${style.paddingLeft}`;
         const margin = `${style.marginTop} ${style.marginRight} ${style.marginBottom} ${style.marginLeft}`;
 
-        // Border
         const border = `${style.borderTopWidth} ${style.borderTopStyle} ${style.borderTopColor}`;
 
-        // Border Radius
         const radius = style.borderRadius !== '0px' ? style.borderRadius : '—';
 
-        // GAP (somente se existir)
         let gap = '—';
         if (style.display === 'flex' || style.display === 'grid') {
             gap = style.gap !== 'normal' ? style.gap : '—';
         }
 
-        // Nome do elemento
         const name = getElementName(el);
 
-        /* Injeta dados para o CSS */
         el.setAttribute('data-class-name', name);
         el.setAttribute('data-width', width);
         el.setAttribute('data-height', height);
@@ -138,9 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('inspect-active');
     }
 
-    /* ===============================
-       EVENT DELEGATION
-    =============================== */
     document.addEventListener('mouseover', (e) => {
         clearInspection();
         inspectElement(e.target);
@@ -153,9 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* ===============================
-       SCROLL REVEAL ANIMATION
-    =============================== */
+
+
+
+
+// Scroll
     const revealElements = document.querySelectorAll('.reveal');
     
     const revealObserver = new IntersectionObserver((entries) => {

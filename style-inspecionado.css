@@ -194,7 +194,8 @@ a {
 /* Sections General */
 .about,
 .projects,
-.science {
+.science,
+.skills {
     padding: 100px 0;
     position: relative;
 
@@ -226,7 +227,8 @@ a {
 
 .about-img {
     position: relative;
-    height: 300px;
+    width: 100%;
+    height: 450px;
 
     background: repeating-linear-gradient(45deg,
             rgba(255, 255, 255, 0.05),
@@ -239,6 +241,135 @@ a {
     display: block;
 }
 
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* corta mantendo proporção */
+    object-position: center;
+}
+
+/* ============================
+   SKILLS SECTION
+   ============================ */
+
+.skills {
+    position: relative;
+}
+
+/* ============================
+   SKILLS GRID
+   ============================ */
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+
+    background: var(--inspect-bg-content);
+    outline: 2px dashed var(--inspect-out-container);
+    padding: 2rem;
+    position: relative;
+}
+
+/* Etiqueta */
+.skills-grid::before {
+    content: ".skills-grid";
+    position: absolute;
+    top: -14px;
+    left: 0;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--inspect-out-container);
+}
+
+/* ============================
+   SKILL CARD
+   ============================ */
+
+.skill-card {
+    flex: 1 1 300px;
+    max-width: 400px;
+    min-height: 200px;
+    padding: 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: var(--inspect-bg-card);
+    border: 1px dashed var(--inspect-out-element);
+    outline: 2px dashed var(--inspect-out-element);
+    border-radius: 15px;
+
+    transition: all 0.3s ease;
+    cursor: crosshair;
+    position: relative;
+}
+
+/* Etiqueta */
+.skill-card::before {
+    content: ".skill-card";
+    position: absolute;
+    top: -14px;
+    left: 0;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--inspect-out-element);
+}
+
+/* ============================
+   SKILL TITLE
+   ============================ */
+
+.skill-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+
+    color: var(--inspect-out-accent);
+    outline: 1px dotted var(--inspect-out-accent);
+    padding: 0.5rem;
+}
+
+/* ============================
+   SKILL DESCRIPTION
+   ============================ */
+
+.skill-description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+
+    color: var(--text-color);
+    border-top: 1px dotted var(--inspect-out-accent);
+    transition: all 0.3s ease;
+}
+
+/* ============================
+   HOVER
+   ============================ */
+
+.skill-card:hover {
+    background: var(--inspect-bg-div);
+    transform: translateY(-8px);
+    border-color: var(--inspect-out-accent);
+}
+
+.skill-card:hover h3 {
+    transform: translateY(-6px);
+}
+
+.skill-card:hover .skill-description {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 1rem;
+}
 
 .projects-grid {
     display: grid;
@@ -308,7 +439,9 @@ a {
 }
 
 .science-img img {
-    opacity: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .timeline {

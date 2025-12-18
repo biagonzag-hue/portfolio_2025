@@ -343,6 +343,9 @@ body {
 }
 
 /* Skills Section */
+.skills {
+    padding: 100px 0;
+}
 
 .skills-grid {
     display: flex;

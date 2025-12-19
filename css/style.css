@@ -5,9 +5,9 @@
     --bg-earth: #4F6F52;
     --bg-earth-light: #F5F5DC;
     --text-light: #ffffff;
-    --text-dim: #a0a0a0;
+    --text-dim: #5ab9ea;
     --text-dark: #2c3e50;
-    --accent: #5ab9ea;
+    --accent: #e6e5e0;
     --accent-green: #7FB069;
     --font-main: 'Outfit', sans-serif;
 }
@@ -21,7 +21,6 @@
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     font-family: var(--font-main);
@@ -39,14 +38,13 @@ body {
     min-height: 250vh;
 }
 
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-
+/* NAV BAR */
 .navbar {
     position: fixed;
     top: 0;
@@ -92,6 +90,7 @@ body {
     color: var(--text-light);
 }
 
+/* Mobile Menu Icon */
 .mobile-menu-icon {
     display: none;
     flex-direction: column;
@@ -106,12 +105,18 @@ body {
     border-radius: 2px;
 }
 
+/* Estrelinhas que giram */
 .stars-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* Centraliza o ponto de rotação */
+    top: 50%;
+    left: 50%;
+    /* Faz a camada ser bem maior que a tela para não faltar estrelas ao girar */
+    width: 200vmax;
+    height: 200vmax;
+    transform: translate(-50%, -50%);
+    /* Garante que o centro da div seja o centro da tela */
+
     z-index: -1;
     pointer-events: none;
     background-image: radial-gradient(circle,
@@ -119,27 +124,40 @@ body {
             transparent 1px);
     background-size: 5rem 5rem;
     opacity: 0.4;
-    animation: blink 3s infinite ease-in-out alternate;
+
+    animation:
+        blink 3s infinite ease-in-out alternate,
+        rotateStars 200s linear infinite;
 }
 
-@keyframes blink {
-    0% {
-        opacity: 0.2;
-    }
-
-    100% {
-        opacity: 0.8;
-    }
-}
-
+/* INTRO SECTION */
 .intro {
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* a setinha precisa */
+    position: relative;
     padding-top: 80px;
-    padding-left: 20px;
-    padding-right: 20px;
+
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.intro .container {
+    width: 100%;
+    max-width: 1200px;
+    /* Deve ser igual ao container da Navbar */
+    padding: 0 20px;
+    /* Garante a margem mínima nas bordas */
+    margin: 0 auto;
+    /* Centraliza o bloco de 1200px na tela */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Alinha todo o texto à esquerda do container */
 }
 
 .hero-heading {
@@ -186,7 +204,6 @@ body {
 }
 
 .words {
-
     animation: rotateTextUser 12.5s infinite;
 }
 
@@ -214,6 +231,70 @@ body {
 
 }
 
+/* setinhas */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    /* Alinha à esquerda acompanhando o texto (ajuste para 10% ou o valor do seu padding) */
+    /* Removemos o translateX(-50%) para ele não fugir do lugar */
+    transform: none;
+    display: flex;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.arrows {
+    display: flex;
+    flex-direction: column;
+    /* Garante que as setas fiquem empilhadas à esquerda */
+
+}
+
+.arrows span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    transform: rotate(45deg);
+    /* Mantive o margin para o encaixe, mas apenas vertical */
+    margin: -5px 0;
+    animation: arrowScroll 5s infinite;
+}
+
+.arrows span:nth-child(2) {
+    animation-delay: -2s;
+}
+
+.arrows span:nth-child(3) {
+    animation-delay: -2.5s;
+}
+
+@keyframes arrowScroll {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        left: 20px;
+        /* Alinha com a margem mobile que definimos antes */
+    }
+}
+
+/* SECTIONS GENERAL */
 .about,
 .projects,
 .science,
@@ -228,6 +309,7 @@ body {
     padding-left: 1rem;
 }
 
+/* ABOUT SECTION */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -243,28 +325,188 @@ body {
 .about-img {
     position: relative;
     width: 100%;
-    height: 550px;
-
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-    );
-
-    outline: 2px dashed var(--text-color);
-    overflow: hidden;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    margin: 0 auto;
 }
 
 .about-img img {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     object-position: center;
+    transition: transform 0.5s ease;
 }
 
+.about-img:hover img {
+    transform: scale(1.05);
+}
 
+.about-img-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-social-sidebar {
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    z-index: 10;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.about-social-sidebar a {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.about-social-sidebar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transition: 0.5s;
+}
+
+.btn-contact:hover::before {
+    left: 100%;
+}
+
+.btn-contact:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(90, 185, 234, 0.3);
+    color: var(--accent);
+}
+
+.btn-contact i {
+    font-size: 1.2rem;
+}
+
+/* SKILLS SECTION */
+.skills {
+    padding: 100px 0;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.skill-card {
+    flex: 1 1 300px;
+    max-width: 400px;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.skill-card h3 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+    transition: transform 0.4s ease;
+    text-align: center;
+}
+
+.skill-description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.skill-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent);
+}
+
+.skill-card:hover h3 {
+    transform: translateY(-10px);
+}
+
+.skill-card:hover .skill-description {
+    max-height: 200px;
+
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+/* PROJECTS SECTION */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -341,82 +583,7 @@ body {
     border-bottom: 2px solid var(--accent);
 }
 
-.skills {
-    padding: 100px 0;
-}
-
-.skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.skill-card {
-    flex: 1 1 300px;
-    max-width: 400px;
-    padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 200px;
-}
-
-.skill-card h3 {
-    margin: 0;
-    color: var(--accent);
-    font-size: 1.5rem;
-    transition: transform 0.4s ease;
-    text-align: center;
-}
-
-.skill-description {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    margin-top: 0;
-    color: var(--text-dim);
-    font-size: 1rem;
-    line-height: 1.5;
-    transition: all 0.4s ease;
-    text-align: center;
-}
-
-.skill-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border-color: var(--accent);
-}
-
-.skill-card:hover h3 {
-    transform: translateY(-10px);
-}
-
-.skill-card:hover .skill-description {
-    max-height: 200px;
-
-    opacity: 1;
-    margin-top: 1rem;
-}
-
-
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* SCIENCE SECTION */
 .science {
     color: var(--text-dark);
     position: relative;
@@ -437,8 +604,12 @@ body {
 .science-img {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    height: 100%;
-    min-height: 300px;
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden
 }
 
 .science-img img {
@@ -482,6 +653,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
+/* FOOTER */
 #footer {
     padding: 80px 0 40px;
     text-align: center;
@@ -513,7 +685,6 @@ body {
 
 .social-links a {
     color: var(--text-light);
-    text-decoration: none;
     font-weight: 600;
     padding-bottom: 2px;
     border-bottom: 1px solid transparent;
@@ -525,6 +696,19 @@ body {
 }
 
 /* ANIMAÇÕES */
+
+/* REVEAL EFFECT */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -546,35 +730,70 @@ body {
     }
 }
 
+/* do BG stars */
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes rotateStars {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
-    .hero-heading h1 {
-        font-size: 3rem;
+
+    /* 1. Reset de segurança para evitar rolagem lateral */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
     }
 
-    .hero-heading {
-        font-size: 1.5rem;
+    /* 2. Containers e Espaçamento Global */
+    .container,
+    .intro,
+    .about,
+    .projects,
+    .science,
+    .skills {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        width: 100%;
+        box-sizing: border-box;
     }
-}
 
-@media (max-width: 768px) {
-    .about-content {
-        grid-template-columns: 1fr;
+    .about,
+    .projects,
+    .science,
+    .skills {
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
-}
 
-@media (max-width: 768px) {
+    /* 3. Navbar e Menu Mobile */
     .nav-links {
         position: fixed;
         right: -100%;
         top: 0;
         height: 100vh;
         width: 70%;
-        background: #050A14;
+        background: var(--bg-space);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: right 0.3s ease;
+        transition: 0.3s ease;
     }
 
     .nav-links.active {
@@ -584,51 +803,98 @@ body {
     .mobile-menu-icon {
         display: flex;
         z-index: 1001;
-
     }
 
+    /* 4. Hero / Intro Section */
     .hero-heading h1 {
         font-size: 2.5rem;
-
     }
 
     .hero-heading {
         font-size: 1.1rem;
-        width: 100%;
-        padding: 0 10px;
+        text-align: left;
     }
 
     .hero-heading>div {
-        flex-direction: row;
+        display: flex;
         align-items: center;
-
-        gap: 0.3rem;
         height: 30px;
-
     }
 
-    .hero-heading>div>p {
-        line-height: 30px;
-        margin: 0;
-    }
-
-    .container-words {
-        width: auto;
-        height: 30px;
-
-        overflow: hidden;
-        flex: 1;
-    }
-
+    .container-words,
     .words p {
-        font-size: 0.85rem;
-        line-height: 30px;
-
         height: 30px;
-        margin: 0;
-        white-space: nowrap;
+        line-height: 30px;
+        font-size: 0.9rem;
     }
 
+    /* 5. Seção About Me (Ajuste Crítico das Redes Sociais) */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-social-sidebar {
+        position: absolute;
+        left: 15px;
+        /* Move para dentro da imagem */
+        top: 15px;
+        transform: none;
+        flex-direction: row;
+        /* Horizontal para não tampar o rosto */
+        background: rgba(0, 0, 0, 0.4);
+        padding: 8px;
+        border-radius: 15px;
+    }
+
+    .about-social-sidebar a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .about-img {
+        max-width: 300px;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+
+    /* 6. Seção Science */
+    .science-content {
+        grid-template-columns: 1fr;
+    }
+
+    .science-img {
+        max-width: 280px;
+        margin-top: 1.5rem;
+    }
+
+    /* 7. Rodapé e Botão de Inspeção */
+    #footer {
+        padding: 40px 20px;
+    }
+
+    .footer-quote {
+        font-size: 1.1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    #toggle-inspection {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        z-index: 99999;
+    }
+
+    /* do carrossel .words */
     @keyframes rotateTextUser {
 
         0%,
@@ -653,24 +919,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    #footer {
-        padding: 40px 0 20px;
-    }
-
-    .footer-quote {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
-    }
-
-    .social-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        padding: 0 1rem;
-    }
-}
-
+/* Botão inspection */
 #toggle-inspection {
     position: fixed;
     bottom: 20px;

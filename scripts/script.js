@@ -1,27 +1,3 @@
-// Mobile Menu
-const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-const navLinks = document.querySelector('.nav-links');
-
-if (mobileMenuIcon) {
-    mobileMenuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileMenuIcon.classList.toggle('active');
-    });
-}
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navLinks && mobileMenuIcon) {
-            navLinks.classList.remove('active');
-            mobileMenuIcon.classList.remove('active');
-        }
-    });
-});
-
-
-
-
-
 // Inspection 
 document.addEventListener('DOMContentLoaded', () => {
     const inspectionBtn = document.getElementById('toggle-inspection');
@@ -42,9 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.warn('Inspection button not found!');
     }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
 
     function clearInspection() {
         document.querySelectorAll('.inspect-active').forEach(el => {
@@ -85,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const padding = `${style.paddingTop} ${style.paddingRight} ${style.paddingBottom} ${style.paddingLeft}`;
         const margin = `${style.marginTop} ${style.marginRight} ${style.marginBottom} ${style.marginLeft}`;
-
         const border = `${style.borderTopWidth} ${style.borderTopStyle} ${style.borderTopColor}`;
 
         const radius = style.borderRadius !== '0px' ? style.borderRadius : '—';
-
+        
         let gap = '—';
+
         if (style.display === 'flex' || style.display === 'grid') {
             gap = style.gap !== 'normal' ? style.gap : '—';
         }
@@ -123,11 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // Mobile Menu
+    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenuIcon) {
+        mobileMenuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuIcon.classList.toggle('active');
+        });
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks && mobileMenuIcon) {
+                navLinks.classList.remove('active');
+                mobileMenuIcon.classList.remove('active');
+            }
+        });
+    });
 
 
-// Scroll
+
+    // Scroll
     const revealElements = document.querySelectorAll('.reveal');
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -140,3 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 });
+
